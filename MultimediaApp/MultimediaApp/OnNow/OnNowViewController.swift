@@ -10,21 +10,137 @@ import UIKit
 
 class OnNowViewController: UIViewController {
 
+    @IBOutlet weak var nowPlayingView: UIView!
+    @IBOutlet weak var nowPlayingImageView: UIImageView!
+    @IBOutlet weak var nowPlayingChannelImageView: UIImageView!
+    @IBOutlet weak var nowPlayingTitleLabel: UILabel!
+    @IBOutlet weak var nowPlayingSubTitleLabel: UILabel!
+    @IBOutlet weak var onNowTableView: UITableView!
+    @IBOutlet weak var eventCollectionView: UICollectionView!
+    
+    @IBOutlet weak var channelLabel: UILabel!
+    @IBOutlet weak var eventLabel: UILabel!
+    @IBOutlet weak var channelSelectedImageView: UIImageView!
+    @IBOutlet weak var eventSelectedImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        nowPlayingView.dropShadow()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
-    */
 
+    @IBAction func playButtonClicked(_ sender: Any) {
+    }
+    
+    @IBAction func channelButtonClicked(_ sender: Any) {
+        channelSelectedImageView.isHidden = false
+        eventSelectedImageView.isHidden = true
+        
+        channelLabel.textColor = UIColor.white.withAlphaComponent(1)
+        eventLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+        
+        onNowTableView.isHidden = false
+        eventCollectionView.isHidden = true
+    }
+    
+    @IBAction func eventButtonClicked(_ sender: Any) {
+        channelSelectedImageView.isHidden = true
+        eventSelectedImageView.isHidden = false
+        
+        channelLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+        eventLabel.textColor = UIColor.white.withAlphaComponent(1)
+        
+        onNowTableView.isHidden = true
+        eventCollectionView.isHidden = false
+    }
+    
+}
+
+extension OnNowViewController: UITableViewDelegate, UITableViewDataSource {
+    // TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 73
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OnNowTableViewCell", for: indexPath) as! OnNowTableViewCell
+        cell.onNowBackgroundView.roundCorners(corners: [.topLeft, .bottomLeft])
+        
+        return cell
+    }
+}
+
+extension OnNowViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 239
+            , height: 288)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnNowEventCollectionViewCell", for: indexPath) as! OnNowEventCollectionViewCell
+        cell.roundCorners(corners: .allCorners)
+        return cell
+    }
+}
+
+class OnNowTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var onNowBackgroundView: UIView!
+    @IBOutlet weak var favouriteImageView: UIImageView!
+    @IBOutlet weak var channelImageView: UIImageView!
+    @IBOutlet weak var onNowCollectionView: UICollectionView!
+    
+    @IBAction func favouriteButtonClicked(_ sender: Any) {
+        favouriteImageView.image = favouriteImageView.image == UIImage(systemName: "heart") ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
+}
+
+extension OnNowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150
+            , height: 65)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnNowCollectionViewCell", for: indexPath) as! OnNowCollectionViewCell
+        return cell
+    }
+}
+
+class OnNowCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var videoProcessView: UIProgressView!
+    @IBOutlet weak var videoTimerLabel: UILabel!
+    @IBOutlet weak var watchingLabel: UILabel!
+}
+
+class OnNowEventCollectionViewCell: UICollectionViewCell {
+    
 }

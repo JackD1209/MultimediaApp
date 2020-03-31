@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19F97FA64C05574995C77995 /* Pods_MultimediaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5175ED29B9C9485213A2B6 /* Pods_MultimediaApp.framework */; };
+		CF2ED4D22428AED300742504 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED4D12428AED200742504 /* UIViewExtension.swift */; };
 		CFC7995023FD2974003AD28D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7994F23FD2974003AD28D /* AppDelegate.swift */; };
 		CFC7995223FD2975003AD28D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7995123FD2975003AD28D /* SceneDelegate.swift */; };
 		CFC7995423FD2975003AD28D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7995323FD2975003AD28D /* ViewController.swift */; };
@@ -26,11 +27,14 @@
 		CFC7997F23FD2E58003AD28D /* MyPicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7997E23FD2E58003AD28D /* MyPicksViewController.swift */; };
 		CFC7998123FD2E7F003AD28D /* CatchUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7998023FD2E7F003AD28D /* CatchUpViewController.swift */; };
 		CFC7998423FD2EEB003AD28D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7998323FD2EEB003AD28D /* Utilities.swift */; };
+		CFDBF36D24333BD600D5D762 /* GraphikSemibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDBF36C24333BD600D5D762 /* GraphikSemibold.otf */; };
+		CFDBF36F24333F2B00D5D762 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBF36E24333F2B00D5D762 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9AED70FA03958B345B98DB8A /* Pods-MultimediaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaApp.release.xcconfig"; path = "Target Support Files/Pods-MultimediaApp/Pods-MultimediaApp.release.xcconfig"; sourceTree = "<group>"; };
 		CEEAAF7360F745D932CF73BB /* Pods-MultimediaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaApp.debug.xcconfig"; path = "Target Support Files/Pods-MultimediaApp/Pods-MultimediaApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CF2ED4D12428AED200742504 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CFC7994C23FD2974003AD28D /* MultimediaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultimediaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC7994F23FD2974003AD28D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC7995123FD2975003AD28D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		CFC7997E23FD2E58003AD28D /* MyPicksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicksViewController.swift; sourceTree = "<group>"; };
 		CFC7998023FD2E7F003AD28D /* CatchUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchUpViewController.swift; sourceTree = "<group>"; };
 		CFC7998323FD2EEB003AD28D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CFDBF36C24333BD600D5D762 /* GraphikSemibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GraphikSemibold.otf; sourceTree = "<group>"; };
+		CFDBF36E24333F2B00D5D762 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		DE5175ED29B9C9485213A2B6 /* Pods_MultimediaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,7 +86,6 @@
 				CEEAAF7360F745D932CF73BB /* Pods-MultimediaApp.debug.xcconfig */,
 				9AED70FA03958B345B98DB8A /* Pods-MultimediaApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,6 +110,7 @@
 		CFC7994E23FD2974003AD28D /* MultimediaApp */ = {
 			isa = PBXGroup;
 			children = (
+				CFDBF36B24333BA500D5D762 /* Fonts */,
 				CFC7998223FD2ED7003AD28D /* Utilities */,
 				CFC7996B23FD2BDC003AD28D /* MainTabBar */,
 				CFC7996A23FD2BD4003AD28D /* Settings */,
@@ -180,8 +186,18 @@
 			isa = PBXGroup;
 			children = (
 				CFC7998323FD2EEB003AD28D /* Utilities.swift */,
+				CF2ED4D12428AED200742504 /* UIViewExtension.swift */,
+				CFDBF36E24333F2B00D5D762 /* GradientView.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CFDBF36B24333BA500D5D762 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CFDBF36C24333BD600D5D762 /* GraphikSemibold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +263,7 @@
 				CFC7997123FD2DA2003AD28D /* SearchStoryboard.storyboard in Resources */,
 				CFC7997523FD2DBB003AD28D /* MyPicksStoryboard.storyboard in Resources */,
 				CFC7995923FD2978003AD28D /* Assets.xcassets in Resources */,
+				CFDBF36D24333BD600D5D762 /* GraphikSemibold.otf in Resources */,
 				CFC7997723FD2DC9003AD28D /* CatchUpStoryboard.storyboard in Resources */,
 				CFC7996F23FD2D90003AD28D /* SettingsStoryboard.storyboard in Resources */,
 				CFC7995723FD2975003AD28D /* Main.storyboard in Resources */,
@@ -288,6 +305,8 @@
 			files = (
 				CFC7997B23FD2E10003AD28D /* SearchViewController.swift in Sources */,
 				CFC7995423FD2975003AD28D /* ViewController.swift in Sources */,
+				CFDBF36F24333F2B00D5D762 /* GradientView.swift in Sources */,
+				CF2ED4D22428AED300742504 /* UIViewExtension.swift in Sources */,
 				CFC7996D23FD2C17003AD28D /* MainTabBarViewController.swift in Sources */,
 				CFC7995023FD2974003AD28D /* AppDelegate.swift in Sources */,
 				CFC7997923FD2DEB003AD28D /* SettingsViewController.swift in Sources */,

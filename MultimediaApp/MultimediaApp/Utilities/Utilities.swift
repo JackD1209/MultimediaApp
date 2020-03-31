@@ -15,4 +15,8 @@ struct Utilities {
         let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: viewControllerId)
     }
+    
+    static func isIPad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
 }
