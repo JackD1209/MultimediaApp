@@ -22,11 +22,17 @@ class OnNowViewController: UIViewController {
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var channelSelectedImageView: UIImageView!
     @IBOutlet weak var eventSelectedImageView: UIImageView!
+    @IBOutlet weak var nowPlayingHeightConstraint: NSLayoutConstraint!
+    
+    var lastContentOffset: CGFloat = 0
+    var maxNowPlayingConstraint: CGFloat = 0
+    var minNowPlayingConstraint: CGFloat = 80
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nowPlayingView.dropShadow()
+        maxNowPlayingConstraint = nowPlayingHeightConstraint.constant
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +68,6 @@ class OnNowViewController: UIViewController {
 }
 
 extension OnNowViewController: UITableViewDelegate, UITableViewDataSource {
-    // TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -76,6 +81,24 @@ extension OnNowViewController: UITableViewDelegate, UITableViewDataSource {
         cell.onNowBackgroundView.roundCorners(corners: [.topLeft, .bottomLeft])
         
         return cell
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.lastContentOffset < scrollView.contentOffset.y {
+            if nowPlayingHeightConstraint.constant > minNowPlayingConstraint {
+                nowPlayingHeightConstraint.constant -= 1
+            }
+        } else if self.lastContentOffset > scrollView.contentOffset.y {
+            if nowPlayingHeightConstraint.constant < maxNowPlayingConstraint {
+                nowPlayingHeightConstraint.constant += 1
+            }
+        } else {
+            // didn't move
+        }
     }
 }
 
@@ -143,4 +166,17 @@ class OnNowCollectionViewCell: UICollectionViewCell {
 
 class OnNowEventCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventProcessView: UIProgressView!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventSubTitleLabel: UILabel!
+    @IBOutlet weak var playEventButton: UIImageView!
+    @IBOutlet weak var watchingView: UIView!
+    @IBOutlet weak var liveView: UIView!
+    
+    @IBAction func playEventButtonClicked(_ sender: Any) {
+        
+    }
 }
