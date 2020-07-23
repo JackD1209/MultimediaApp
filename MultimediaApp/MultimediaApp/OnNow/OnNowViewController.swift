@@ -80,22 +80,35 @@ extension OnNowViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
+    private func moveDown(_ scrollView: UIScrollView) -> Bool {
+        return scrollView.contentOffset.y > lastContentOffset
+    }
+
+    private func moveUp(_ scrollView: UIScrollView) -> Bool {
+        return scrollView.contentOffset.y < lastContentOffset
+    }
+
+    private func newHeaderViewHeightWhileMoving(calculatedBy scrollView: UIScrollView) -> CGFloat {
+        return nowPlayingHeightConstraint.constant - scrollView.contentOffset.y
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.lastContentOffset < scrollView.contentOffset.y {
-            if nowPlayingHeightConstraint.constant > minNowPlayingConstraint {
-                nowPlayingHeightConstraint.constant -= 1
-            }
-        } else if self.lastContentOffset > scrollView.contentOffset.y {
-            if nowPlayingHeightConstraint.constant < maxNowPlayingConstraint {
-                nowPlayingHeightConstraint.constant += 1
+        guard scrollView.contentOffset.y < scrollView.contentSize.height - scrollView.bounds.size.height else { return }
+        if self.newHeaderViewHeightWhileMoving(calculatedBy: scrollView) < minNowPlayingConstraint {
+            nowPlayingHeightConstraint.constant = minNowPlayingConstraint
+        } else if (self.newHeaderViewHeightWhileMoving(calculatedBy: scrollView) > maxNowPlayingConstraint)
+            || (scrollView.contentOffset.y <= 0 && moveUp(scrollView)) {
+            nowPlayingHeightConstraint.constant = maxNowPlayingConstraint
+            UIView.animate(withDuration: 0.7) {
+                self.view.layoutIfNeeded()
             }
         } else {
-            // didn't move
+            nowPlayingHeightConstraint.constant = self.newHeaderViewHeightWhileMoving(calculatedBy: scrollView)
+            if moveDown(scrollView) {
+                scrollView.contentOffset.y = 0
+            }
         }
+        lastContentOffset = scrollView.contentOffset.y
     }
 }
 

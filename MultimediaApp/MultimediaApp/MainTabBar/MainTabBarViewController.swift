@@ -13,7 +13,6 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         setupTabBars()
-        // Do any additional setup after loading the view.
     }
     
     private func setupTabBars() {
