@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-struct Utilities {
-    
+enum Utilities {
     static func getViewController(from storyBoardName: String, viewControllerId: String) -> UIViewController? {
         let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: viewControllerId)

@@ -9,7 +9,6 @@
 import UIKit
 
 class OnNowViewController: UIViewController {
-
     @IBOutlet weak var nowPlayingView: UIView!
     @IBOutlet weak var nowPlayingImageView: UIImageView!
     @IBOutlet weak var nowPlayingChannelImageView: UIImageView!
@@ -17,7 +16,6 @@ class OnNowViewController: UIViewController {
     @IBOutlet weak var nowPlayingSubTitleLabel: UILabel!
     @IBOutlet weak var onNowTableView: UITableView!
     @IBOutlet weak var eventCollectionView: UICollectionView!
-    
     @IBOutlet weak var channelLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var channelSelectedImageView: UIImageView!
@@ -64,7 +62,6 @@ class OnNowViewController: UIViewController {
         onNowTableView.isHidden = true
         eventCollectionView.isHidden = false
     }
-    
 }
 
 extension OnNowViewController: UITableViewDelegate, UITableViewDataSource {
@@ -108,8 +105,7 @@ extension OnNowViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 239
-            , height: 288)
+        return CGSize(width: 239, height: 288)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -124,7 +120,6 @@ extension OnNowViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 class OnNowTableViewCell: UITableViewCell {
-
     @IBOutlet weak var onNowBackgroundView: UIView!
     @IBOutlet weak var favouriteImageView: UIImageView!
     @IBOutlet weak var channelImageView: UIImageView!
@@ -141,8 +136,7 @@ extension OnNowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150
-            , height: 65)
+        return CGSize(width: 150, height: 65)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -156,7 +150,6 @@ extension OnNowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 class OnNowCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var videoProcessView: UIProgressView!
@@ -165,7 +158,6 @@ class OnNowCollectionViewCell: UICollectionViewCell {
 }
 
 class OnNowEventCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventProcessView: UIProgressView!
@@ -177,6 +169,5 @@ class OnNowEventCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var liveView: UIView!
     
     @IBAction func playEventButtonClicked(_ sender: Any) {
-        
     }
 }

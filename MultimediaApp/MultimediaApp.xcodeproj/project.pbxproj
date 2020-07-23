@@ -208,6 +208,7 @@
 			buildConfigurationList = CFC7996023FD2978003AD28D /* Build configuration list for PBXNativeTarget "MultimediaApp" */;
 			buildPhases = (
 				9727A892A0CFBABFBC37726A /* [CP] Check Pods Manifest.lock */,
+				024D270A24C92BDF00F8E757 /* ShellScript */,
 				CFC7994823FD2974003AD28D /* Sources */,
 				CFC7994923FD2974003AD28D /* Frameworks */,
 				CFC7994A23FD2974003AD28D /* Resources */,
@@ -274,6 +275,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		024D270A24C92BDF00F8E757 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
 		9727A892A0CFBABFBC37726A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
